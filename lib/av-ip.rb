@@ -2,6 +2,30 @@ require 'net/https'
 require 'uri'
 
 
+def to_h(string)
+	output = {}
+	key = ''
+	value = ''
+	x = string.split(' ')
+	for i in 1...x.length
+		if i % 2 == 1
+			key = x[i]
+		elsif i % 2 == 0
+			value = x[i]
+			key = key.tr('"','')
+			key = key.tr(':','')
+			value = value.tr('"','')
+			if value[value.size-1] == ','
+				value[value.size-1] = ''
+			end
+			output[key] = value
+			key = ''
+			value = ''
+		end
+	end
+	return output
+end
+
 class AVIP
 	def initialize(ip = '127.0.0.1', content = [])
 		@ip = ip
@@ -33,7 +57,7 @@ class AVIP
 					puts "Ip changed to #{value}."
 				elsif key == :content
 					if value.length == 0
-						puts "Invalid Input, using all outputs"
+						puts "Using all outputs"
 					else
 						content = []
 						value.each do |val|
@@ -63,9 +87,9 @@ class AVIP
 		Net::HTTP.start(uri.host, uri.port) do |http|
 			request = Net::HTTP::Get.new uri
 			response = http.request request
-			res = eval(response.body )
+			res = (response.body )
 			if @content == []
-				return res
+				return to_h(res)
 			else
 				new_res = {}
 				res.each do |key,value|
@@ -80,4 +104,3 @@ class AVIP
 		end
 	end
 end
-
