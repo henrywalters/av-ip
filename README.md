@@ -1,7 +1,7 @@
 #AVIP
 
 ## Summary
-AVIP is a lightweight ruby gem for geolocation of ip addresses. The gem is a wrapper built around ipinfo.io. 
+AVIP is a lightweight ruby gem for geolocation of ip addresses. The gem is a wrapper built around ipinfo.io. Everything is native ruby and requires no non-standard ruby gems. 
 ## Installation
 Fairly standard stuff
 ```
@@ -42,4 +42,6 @@ The following output parameters are:
 :postal
 ```
 ##Notes
-This should be used with caution in its current state as it uses eval to parse the string.
+The next phase in development is bulk geolocation and google map construction
+##Contribute
+I Would love for y'all to contribute. Fork and hit me up.
