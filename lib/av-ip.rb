@@ -81,6 +81,3 @@ class AVIP
 	end
 end
 
-i = AVIP.new()
-i.update( { :ip => '66.87.114.81', :content => [:city,:region, :loc]} )
-puts i.search

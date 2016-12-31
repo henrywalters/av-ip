@@ -10,9 +10,9 @@ gem install av-ip
 ## Usage
 To initialize an instance of the geolocation tool, simply call
 ```
-locater = AVIP.new('127.0.0.1',[:ip,:city])
+locater = AVIP.new()
 ```
-The default instance is localhost, '127.0.0.1', yielding every output parameter. If you are unsure about settings it is best to just leave as default. 
+The default instance is localhost, '127.0.0.1', yielding every output parameter. If you are unsure about settings it is best to leave the default parameters.
 
 Post initialization, you may pass the locater paramters in hash format. 
 Example:
@@ -30,3 +30,16 @@ By default, search looks for the ip stored in the options, but simply adding any
 ```
 locater.search('123.45.67.89')
 ```
+The following output parameters are:
+```
+:ip,
+:hostname,
+:city,
+:region,
+:country,
+:loc,
+:org,
+:postal
+```
+##Notes
+This should be used with caution in its current state as it uses eval to parse the string.
